@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Consulta Vehículos</title>
+  <script src="https://my.geotab.com/sdk/sdk.js"></script>
+</head>
+<body>
+  <h2>Vehículos</h2>
+  <ul id="vehicleList"></ul>
+
+  <script>
+    const api = new MyGeotabApi({ session: parent.geotab.session });
+
+    api.call("Get", {
+      typeName: "Device",
+      search: {},
+      resultsLimit: 10
+    }).then(devices => {
+      const ul = document.getElementById("vehicleList");
+      devices.forEach(device => {
+        const li = document.createElement("li");
+        li.textContent = device.name;
+        ul.appendChild(li);
+      });
+    }).catch(console.error);
+  </script>
+</body>
+</html>
