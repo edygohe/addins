@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8" />
   <title>Consulta Vehículos</title>
   <script src="https://my.geotab.com/sdk/sdk.js"></script>
 </head>
 <body>
-  <h2>Vehículos</h2>
+  <h2>Vehículos activos</h2>
   <ul id="vehicleList"></ul>
 
   <script>
@@ -22,7 +23,9 @@
         li.textContent = device.name;
         ul.appendChild(li);
       });
-    }).catch(console.error);
+    }).catch(err => {
+      console.error("Error en llamada a API de Geotab", err);
+    });
   </script>
 </body>
 </html>
