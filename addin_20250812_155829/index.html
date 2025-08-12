@@ -8,7 +8,12 @@
     <div id="geotabAddin">
         <h1>Lista de Vehículos</h1>
         <ul id="vehicleList"></ul>
-        <div id="errorMessage" style="display:none;"></div>  <!-- Mensaje de error oculto inicialmente -->
+        <div id="vehicleDetailsModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>ID del Vehículo: <span id="vehicleId"></span></p>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
