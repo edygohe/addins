@@ -21,6 +21,9 @@ geotab.addin.geotabGenesis = function () {
             const userRequestTextArea = document.getElementById('userRequest');
             const generateButton = document.getElementById('generateButton');
             const loaderOverlay = document.getElementById('loader-overlay');
+            
+            // Definimos la URL de la API aquí para que sea fácil de cambiar.
+            const apiUrl = 'http://localhost:8000/generate-addin';
 
             generateButton.addEventListener('click', async function () {
                 const userPrompt = userRequestTextArea.value;
@@ -36,7 +39,7 @@ geotab.addin.geotabGenesis = function () {
                 console.log('Enviando solicitud al backend:', userPrompt);
 
                 try {
-                    const response = await fetch('http://localhost:8000/generate-addin', {
+                    const response = await fetch(apiUrl, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
