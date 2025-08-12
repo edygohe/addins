@@ -20,6 +20,7 @@ geotab.addin.geotabGenesis = function () {
         focus: function (api, state) {
             const userRequestTextArea = document.getElementById('userRequest');
             const generateButton = document.getElementById('generateButton');
+            const loaderOverlay = document.getElementById('loader-overlay');
 
             generateButton.addEventListener('click', async function () {
                 const userPrompt = userRequestTextArea.value;
@@ -29,9 +30,9 @@ geotab.addin.geotabGenesis = function () {
                 }
 
                 // Deshabilitamos el botón para evitar múltiples clics
+                userRequestTextArea.disabled = true;
                 generateButton.disabled = true;
-                generateButton.textContent = 'Generando...';
-                alert('Generación iniciada. El proceso puede tardar unos momentos.');
+                loaderOverlay.classList.remove('hidden');
                 console.log('Enviando solicitud al backend:', userPrompt);
 
                 try {
@@ -51,8 +52,9 @@ geotab.addin.geotabGenesis = function () {
                     alert('Hubo un error al conectar con el servidor de generación. Asegúrate de que el servidor local esté corriendo.');
                 } finally {
                     // Volvemos a habilitar el botón al finalizar, tanto si hay éxito como si hay error
+                    userRequestTextArea.disabled = false;
                     generateButton.disabled = false;
-                    generateButton.innerHTML = '<span class="icon">✨</span> Generar Add-In';
+                    loaderOverlay.classList.add('hidden');
                 }
             });
 
