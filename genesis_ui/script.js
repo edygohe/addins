@@ -21,6 +21,9 @@ geotab.addin.geotabGenesis = function () {
             const userRequestTextArea = document.getElementById('userRequest');
             const generateButton = document.getElementById('generateButton');
             const loaderOverlay = document.getElementById('loader-overlay');
+            const resultContainer = document.getElementById('result-container');
+            const configOutput = document.getElementById('config-output');
+            const copyButton = document.getElementById('copy-button');
             
             // Definimos la URL de la API aquí para que sea fácil de cambiar.
             const apiUrl = 'http://localhost:8000/generate-addin';
@@ -36,6 +39,7 @@ geotab.addin.geotabGenesis = function () {
                 userRequestTextArea.disabled = true;
                 generateButton.disabled = true;
                 loaderOverlay.classList.remove('hidden');
+                resultContainer.classList.add('hidden'); // Ocultar resultados anteriores
                 console.log('Enviando solicitud al backend:', userPrompt);
 
                 try {
@@ -49,7 +53,15 @@ geotab.addin.geotabGenesis = function () {
 
                     const result = await response.json();
                     console.log('Respuesta del backend:', result);
-                    alert(`¡Proceso completado! Los archivos se han generado en la ruta: ${result.output.code_path}`);
+
+                    if (result.output && result.output.config_json && result.output.config_json.trim() !== '') {
+                        const formattedJson = JSON.stringify(JSON.parse(result.output.config_json), null, 2);
+                        configOutput.value = formattedJson;
+                        resultContainer.classList.remove('hidden');
+                        resultContainer.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        alert(`¡Proceso completado! Los archivos se han generado en la ruta: ${result.output.code_path}`);
+                    }
                 } catch (error) {
                     console.error('Error al contactar el backend:', error);
                     alert('Hubo un error al conectar con el servidor de generación. Asegúrate de que el servidor local esté corriendo.');
@@ -59,6 +71,20 @@ geotab.addin.geotabGenesis = function () {
                     generateButton.disabled = false;
                     loaderOverlay.classList.add('hidden');
                 }
+            });
+
+            copyButton.addEventListener('click', function () {
+                navigator.clipboard.writeText(configOutput.value).then(() => {
+                    const originalContent = copyButton.innerHTML;
+                    copyButton.innerHTML = '✅';
+                    copyButton.title = '¡Copiado!';
+                    setTimeout(() => {
+                        copyButton.innerHTML = originalContent;
+                        copyButton.title = 'Copiar al portapapeles';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Error al copiar el JSON: ', err);
+                });
             });
 
             // Una vez que el Add-In tiene el foco, le pedimos a la API de Geotab

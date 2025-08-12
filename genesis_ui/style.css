@@ -104,3 +104,56 @@ button:hover {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* --- Estilos para la sección de resultados --- */
+
+#result-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+#result-container.hidden {
+    display: none;
+}
+
+#result-container h2 {
+    text-align: center;
+    color: #28a745; /* Verde de éxito */
+    margin-bottom: 5px;
+}
+
+.config-wrapper {
+    position: relative;
+    margin-top: 15px;
+}
+
+#config-output {
+    width: 100%;
+    background-color: #e9ecef;
+    color: #495057;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
+    padding: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+#copy-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background-color: #6c757d;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#copy-button:hover {
+    background-color: #5a6268;
+}
