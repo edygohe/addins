@@ -12,9 +12,14 @@ geotab.addin.geotabGenesis = function () {
          * @param {object} api El objeto API de Geotab.
          * @param {object} state El estado guardado del Add-In.
          */
-        initialize: function (api, state) {
-            const generateButton = document.getElementById('generateButton');
+        initialize: function (api, state, callback) {
+            // Llama al callback para indicar que la inicialización básica ha terminado.
+            callback();
+        },
+
+        focus: function (api, state) {
             const userRequestTextArea = document.getElementById('userRequest');
+            const generateButton = document.getElementById('generateButton');
 
             generateButton.addEventListener('click', async function () {
                 const userPrompt = userRequestTextArea.value;
@@ -50,7 +55,11 @@ geotab.addin.geotabGenesis = function () {
                     generateButton.innerHTML = '<span class="icon">✨</span> Generar Add-In';
                 }
             });
+
+            // Una vez que el Add-In tiene el foco, le pedimos a la API de Geotab
+            // que traduzca todos los elementos que marcamos con data-i18n.
+            // Esto reemplaza el texto hardcodeado con el del archivo es.json.
+            api.translate(document.getElementById('geotabAddin'));
         }
     };
 };
-
