@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Últimos 5 Registros GPS</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="geotabAddin">
+        <h2>Últimos 5 Registros GPS del Primer Vehículo</h2>
+        <p id="error-message"></p>  <!-- Para mostrar mensajes de error -->
+        <table id="gps-data">
+            <thead>
+                <tr>
+                    <th>Fecha y Hora</th>
+                    <th>Velocidad (km/h)</th>
+                    <th>Dirección (grados)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button id="refresh-button">Refrescar</button>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
