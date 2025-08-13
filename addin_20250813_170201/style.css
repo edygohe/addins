@@ -1,0 +1,17 @@
+/* CSS Scoped para evitar afectar la UI padre */
+#geotabAddin {
+    font-family: Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    color: #333;
+    background-color: #f0f0f0; /* Color de fondo claro */
+}
+
+h1 {
+    font-size: 24px; /* Tamaño de fuente mayor para el mensaje */
+    text-align: center; /* Alinear el texto al centro */
+}
