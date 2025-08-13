@@ -1,0 +1,20 @@
+#geotabAddin {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+#vehicleList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#vehicleList li {
+    padding: 8px;
+    border: 1px solid #ddd;
+    margin: 4px 0;
+    cursor: pointer;
+}
+
+#vehicleList li:hover {
+    background-color: #f0f0f0;
+}
