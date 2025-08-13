@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoreo de la Salud de la Flota</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="geotabAddin">
+        <div class="header">
+            <button id="refreshButton">Actualizar</button>
+        </div>
+        <div class="container">
+            <div id="panelIzquierdo">
+                <h2>Vehículos con Fallos</h2>
+                <ul id="vehiculosConFallos">
+                    <!-- Lista de vehículos con fallos se llenará aquí -->
+                </ul>
+            </div>
+            <div id="panelDerecho">
+                <div id="map"></div>
+                <div id="detallesFallo">
+                    <h3>Detalles del Fallo</h3>
+                    <table id="tablaDetalles">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Descripción</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Detalles del fallo se llenarán aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
