@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Geotab GPS LogRecords</title>
+</head>
+<body>
+    <div id="geotabAddin">
+        <h1>Últimos 5 Registros de GPS</h1>
+        <button id="refreshButton">Actualizar Datos</button>
+        <table id="logRecordsTable">
+            <thead>
+                <tr>
+                    <th>Fecha y Hora</th>
+                    <th>Velocidad (km/h)</th>
+                    <th>Dirección</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los registros se insertarán aquí dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
