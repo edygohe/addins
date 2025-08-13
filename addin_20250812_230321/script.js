@@ -5,35 +5,35 @@ geotab.addin.mostrarVehiculosEnMapa = function (api, state) {
 
     // Variable para almacenar los vehículos una vez cargados.
     let loadedDevices = [];
-    let areDevicesLoaded = false;
 
     /**
      * Añade los vehículos al mapa y centra la vista.
+     * @param {object} currentState El objeto 'state' actualizado del evento.
      */
-    function showVehiclesOnMap() {
-        // No hacer nada si los datos aún no están listos
-        if (!areDevicesLoaded || loadedDevices.length === 0) {
+    function showVehiclesOnMap(currentState) {
+        if (loadedDevices.length === 0) {
             return;
         }
 
-        console.log("Intentando mostrar vehículos en el mapa...");
-        const map = state.getMap();
+        console.log("Intentando mostrar vehículos en el mapa con el estado actual...");
+        const map = currentState.getMap();
 
         if (map) {
             console.log("Mapa obtenido. Añadiendo vehículos y centrando la vista.");
             map.add("vehicle", loadedDevices);
             map.fitBounds(loadedDevices);
         } else {
-            console.error("No se pudo obtener el objeto del mapa desde 'state'.");
+            console.error("No se pudo obtener el objeto del mapa desde 'state'. Asegúrate de que el Add-In está en una página con mapa.");
         }
     }
 
     /**
      * Limpia los vehículos del mapa.
+     * @param {object} currentState El objeto 'state' actualizado del evento.
      */
-    function clearVehiclesFromMap() {
+    function clearVehiclesFromMap(currentState) {
         console.log("Limpiando vehículos del mapa.");
-        const map = state.getMap();
+        const map = currentState.getMap();
         if (map) {
             map.remove("vehicle");
         }
@@ -42,7 +42,7 @@ geotab.addin.mostrarVehiculosEnMapa = function (api, state) {
     return {
         initialize: function (api, state, callback) {
             const addinContainer = document.getElementById('geotabAddin');
-            addinContainer.innerHTML = '<h2>Primeros 5 Vehículos</h2><p>Los vehículos se mostrarán en el mapa.</p><ul id="vehicleList"><li>Cargando...</li></ul>';
+            addinContainer.innerHTML = '<h2>Primeros 5 Vehículos</h2><p>Los vehículos se mostrarán en el mapa cuando esta ventana tenga el foco.</p><ul id="vehicleList"><li>Cargando...</li></ul>';
 
             api.call("Get", {
                 typeName: "Device",
@@ -55,9 +55,7 @@ geotab.addin.mostrarVehiculosEnMapa = function (api, state) {
                 if (!devices || devices.length === 0) {
                     vehicleList.innerHTML = '<li>No se encontraron vehículos.</li>';
                 } else {
-                    // Guardar los vehículos para usarlos en 'focus'
                     loadedDevices = devices;
-                    // Poblar la lista en el Add-In
                     devices.forEach(device => {
                         const li = document.createElement("li");
                         li.textContent = device.name;
@@ -65,26 +63,23 @@ geotab.addin.mostrarVehiculosEnMapa = function (api, state) {
                     });
                 }
                 
-                areDevicesLoaded = true;
-                // No llamamos a showVehiclesOnMap() aquí. Esperamos al 'focus'.
                 callback(); // ¡Crucial!
             })
             .catch(function (error) {
                 console.error("Error al obtener dispositivos:", error);
                 document.getElementById('vehicleList').innerHTML = '<li>Error al cargar vehículos.</li>';
-                areDevicesLoaded = true; // Marcamos como cargado para no reintentar
                 callback(); // ¡Crucial!
             });
         },
 
         focus: function (api, state) {
-            // Cuando el Add-In gana el foco, mostramos los vehículos.
-            showVehiclesOnMap();
+            // Cuando el Add-In gana el foco, usamos el 'state' de este evento.
+            showVehiclesOnMap(state);
         },
 
         blur: function (api, state) {
-            // Cuando el Add-In pierde el foco, los limpiamos.
-            clearVehiclesFromMap();
+            // Cuando el Add-In pierde el foco, usamos el 'state' de este evento.
+            clearVehiclesFromMap(state);
         }
     };
 };
