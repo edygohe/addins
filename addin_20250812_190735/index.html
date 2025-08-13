@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add-In Geotab - Monitoreo de Salud de la Flota</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="geotabAddin">
+        <button id="refreshButton">Actualizar</button>
+        <div class="panel">
+            <div class="left-panel">
+                <h2>Vehículos con Fallos</h2>
+                <ul id="vehicleList"></ul>
+            </div>
+            <div class="right-panel">
+                <h2>Detalles del Vehículo</h2>
+                <div id="map"></div>
+                <div id="issueDetails"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
