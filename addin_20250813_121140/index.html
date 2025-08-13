@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add-In de Geotab</title>
+    <!-- CSS de Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="geotabAddin">
+        <div class="container">
+            <div class="panel" id="left-panel">
+                <h2>Vehículos</h2>
+                <ul id="vehicle-list"><li>Cargando...</li></ul>
+            </div>
+            <div class="panel" id="right-panel">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+    <!-- JS de Leaflet (antes de tu script) -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
