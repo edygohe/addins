@@ -1,0 +1,12 @@
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+#geotabAddin {
+    padding: 20px;
+}
