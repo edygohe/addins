@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#geotabAddin {
+    display: flex;
+    width: 100%;
+}
+
+.panel-izquierdo {
+    width: 30%;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+}
+
+.panel-derecho {
+    width: 70%;
+    padding: 10px;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+#vehicle-list {
+    list-style: none;
+    padding: 0;
+}
+
+#vehicle-list li {
+    cursor: pointer;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+#vehicle-list li:hover {
+    background-color: #f0f8ff;
+}
