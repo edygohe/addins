@@ -1,0 +1,16 @@
+{
+  "name": "Generated Add-In (addin_20250812_225343)",
+  "supportEmail": "edygohe@gmail.com",
+  "version": "1.0.0",
+  "translator": "translations/",
+  "items": [
+    {
+      "url": "https://edygohe.github.io/addins/addin_20250812_225343/index.html",
+      "path": "Development/Generated",
+      "menuName": {
+        "en": "Generated: addin_20250812_225343"
+      }
+    }
+  ],
+  "isSigned": false
+}
