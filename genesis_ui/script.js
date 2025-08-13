@@ -65,16 +65,30 @@ geotab.addin.geotabGenesis = function () {
                         console.log('Respuesta del backend:', result);
 
                         if (result.output && result.output.config_json && result.output.config_json.trim() !== '') {
+                            const resultTitle = resultContainer.querySelector('h2');
+                            resultTitle.textContent = '¡Add-In Generado!';
+                            resultTitle.classList.remove('error');
+                            resultContainer.querySelector('p').textContent = 'Copia este JSON y pégalo en MyGeotab para instalar tu nuevo Add-In.';
+                            resultContainer.querySelector('.config-wrapper').classList.remove('hidden');
+
                             const formattedJson = JSON.stringify(JSON.parse(result.output.config_json), null, 2);
                             configOutput.value = formattedJson;
                             resultContainer.classList.remove('hidden');
                             resultContainer.scrollIntoView({ behavior: 'smooth' });
                         } else {
-                            alert(`Proceso finalizado. Estado: ${result.status || 'desconocido'}. Mensaje: ${result.message || 'Sin mensaje.'}`);
+                            throw new Error(`La respuesta del backend no contenía un config.json válido. Mensaje: ${result.message || 'Sin detalles.'}`);
                         }
                     } catch (error) {
                         console.error('Error al contactar el backend:', error);
-                        alert('Hubo un error al conectar con el servidor de generación. Asegúrate de que el servidor local esté corriendo.');
+                        const resultTitle = resultContainer.querySelector('h2');
+                        const resultParagraph = resultContainer.querySelector('p');
+                        const configWrapper = resultContainer.querySelector('.config-wrapper');
+                        resultTitle.textContent = '¡Error en la Generación!';
+                        resultTitle.classList.add('error');
+                        resultParagraph.textContent = `Ocurrió un error: ${error.message}. Revisa los logs del servidor para más detalles.`;
+                        configWrapper.classList.add('hidden');
+                        resultContainer.classList.remove('hidden');
+                        resultContainer.scrollIntoView({ behavior: 'smooth' });
                     } finally {
                         // Volvemos a habilitar el botón al finalizar, tanto si hay éxito como si hay error
                         userRequestTextArea.disabled = false;
