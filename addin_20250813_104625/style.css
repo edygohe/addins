@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#vehicle-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#vehicle-list li {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#vehicle-list li:hover {
+    background-color: #f0f8ff;
+}
