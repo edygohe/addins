@@ -1,0 +1,15 @@
+#map {
+    height: 400px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#vehicle-list li {
+    cursor: pointer;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+#vehicle-list li:hover {
+    background-color: #f0f8ff;
+}
