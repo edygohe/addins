@@ -1,0 +1,13 @@
+#geotabAddin {
+    width: 300px;
+    height: 100px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+#message-container {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
