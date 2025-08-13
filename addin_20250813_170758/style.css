@@ -1,0 +1,53 @@
+/* CSS Scoped para evitar afectar la UI padre */
+#geotabAddin {
+    font-family: Arial, sans-serif;
+    height: 100%; /* Usa el 100% de la altura del iframe, es más robusto que vh */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#geotabAddin .container {
+    display: flex;
+    flex-grow: 1; /* Ocupa el espacio restante */
+    height: 100%;
+}
+
+#geotabAddin .panel {
+    height: 100%;
+    box-sizing: border-box; /* El padding no aumenta el tamaño */
+}
+
+#geotabAddin #left-panel {
+    flex: 1; /* Ocupa 1/3 del espacio, se puede ajustar */
+    min-width: 250px;
+    padding: 10px;
+    overflow-y: auto; /* Scroll si la lista es larga */
+    border-right: 1px solid #ccc;
+}
+
+#geotabAddin #right-panel {
+    flex: 3; /* Ocupa 2/3 del espacio */
+}
+
+#geotabAddin #map {
+    height: 100%;
+    width: 100%;
+}
+
+#geotabAddin #vehicle-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#geotabAddin #vehicle-list li {
+    cursor: pointer;
+    padding: 10px 8px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+#geotabAddin #vehicle-list li:hover {
+    background-color: #f0f8ff;
+}
