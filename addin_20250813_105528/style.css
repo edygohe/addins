@@ -1,0 +1,26 @@
+#map {
+    height: 400px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#vehicle-list {
+    width: 250px;
+    float: left;
+    height: 400px;
+    overflow-y: auto;
+}
+
+#vehicle-list li {
+    cursor: pointer;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+#vehicle-list li:hover {
+    background-color: #f0f8ff;
+}
+
+#geotabAddin {
+    display: flex;
+}
