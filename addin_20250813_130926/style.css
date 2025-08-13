@@ -1,0 +1,20 @@
+/* CSS Scoped para un diseño limpio y responsivo */
+#geotabAddin {
+    font-family: Arial, sans-serif;
+    height: 100%; /* Usa el 100% de la altura del iframe */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centra el contenido vertical y horizontalmente */
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Color de fondo claro */
+}
+
+#geotabAddin .mensaje {
+    text-align: center;
+}
+
+#geotabAddin .mensaje h1 {
+    color: #333; /* Color del texto */
+    font-size: 24px; /* Tamaño del texto */
+}
