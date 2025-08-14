@@ -1,0 +1,30 @@
+/* CSS Scoped para evitar afectar la UI padre */
+#geotabAddin {
+    font-family: Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#geotabAddin .container {
+    padding: 10px;
+    box-sizing: border-box; /* El padding no aumenta el tamaño */
+}
+
+#geotabAddin #vehicle-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#geotabAddin #vehicle-list li {
+    cursor: pointer;
+    padding: 10px 8px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+#geotabAddin #vehicle-list li:hover {
+    background-color: #f0f8ff;
+}
