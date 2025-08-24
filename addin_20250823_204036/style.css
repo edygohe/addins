@@ -1,0 +1,30 @@
+/* CSS Scoped para evitar afectar la UI padre */
+#geotabAddin {
+    font-family: Arial, sans-serif;
+    height: 100%; /* Usa el 100% de la altura del iframe, es más robusto que vh */
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+}
+
+#geotabAddin .container {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    height: 100%;
+}
+
+#alertButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#alertButton:hover {
+    background-color: #0056b3;
+}
